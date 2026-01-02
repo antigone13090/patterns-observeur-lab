@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>MLOps Observer Lab</title>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>MLOps Observer Lab</h1>
+    <p class="muted">Observer : publication d'un événement -> notifications/actions automatiques (Slack/email/rollback/réentraînement/ticket/dashboard)</p>
+
+    <div class="card">
+      <h2>Déclencher un événement</h2>
+      <div class="grid">
+        <label>Model ID
+          <input id="modelId" value="reco-v3"/>
+        </label>
+        <label>Incident type
+          <select id="incidentType">
+            <option value="DRIFT" selected>DRIFT (dérive)</option>
+            <option value="LATENCY">LATENCY (latence)</option>
+            <option value="ERROR_RATE">ERROR_RATE (taux d'erreurs)</option>
+            <option value="SECURITY">SECURITY</option>
+            <option value="COST_SPIKE">COST_SPIKE (coûts)</option>
+          </select>
+        </label>
+
+        <label>Metric name
+          <input id="metricName" value="psi_drift"/>
+        </label>
+        <label>Value
+          <input id="value" type="number" step="0.0001" value="0.35"/>
+        </label>
+
+        <label>Threshold
+          <input id="threshold" type="number" step="0.0001" value="0.20"/>
+        </label>
+        <label>Notes (optionnel)
+          <input id="notes" value="batch=2026-01-01"/>
+        </label>
+      </div>
+
+      <div class="row" style="margin-top:12px;">
+        <button id="btnWarn">Simuler WARN</button>
+        <button id="btnAlert">Simuler ALERT</button>
+        <button id="btnCritical">Simuler CRITICAL</button>
+      </div>
+
+      <p class="muted" style="margin-top:10px;">API: <span class="badge">POST /api/mlops/event</span> — retourne la liste des actions déclenchées.</p>
+    </div>
+
+    <div class="card">
+      <h2>Résultat</h2>
+      <pre id="out">{}</pre>
+    </div>
+
+    <div class="card">
+      <h2>Endpoints utiles</h2>
+      <pre>GET  /health
+POST /api/mlops/event</pre>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
