@@ -4,3 +4,6 @@
 .DS_Store
 *.log
 mlops-observer-lab.zip
+
+# local backups
+pom.xml.bak.*
