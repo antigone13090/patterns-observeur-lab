@@ -7,3 +7,9 @@ mlops-observer-lab.zip
 
 # local backups
 pom.xml.bak.*
+
+# local junk
+asm-*.jar
+asm-*.jar.sha256
+pom.xml.bad.*
+pom.xml.bak.*
