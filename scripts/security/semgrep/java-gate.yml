@@ -1,0 +1,18 @@
+rules:
+  - id: java-runtime-exec
+    message: "Usage de Runtime.exec() (risque injection commande)."
+    languages: [java]
+    severity: ERROR
+    pattern: Runtime.getRuntime().exec(...)
+
+  - id: java-processbuilder
+    message: "Usage de ProcessBuilder (à auditer : sources d'arguments)."
+    languages: [java]
+    severity: ERROR
+    pattern: new ProcessBuilder(...)
+
+  - id: java-hardcoded-credential
+    message: "Secret/credential potentiellement hardcodé."
+    languages: [java]
+    severity: ERROR
+    pattern-regex: '(?i)(password|passwd|pwd|secret|token|api[_-]?key)\s*=\s*"[^"]+"'

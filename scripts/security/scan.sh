@@ -27,8 +27,8 @@ fi
 echo "[4/4] DAST (ZAP baseline) : APP_URL requis"
 APP_URL="${APP_URL:-}"
 ZAP_OUT_DIR="${ZAP_OUT_DIR:-$ROOT/zap-out}"
-ZAP_UID="${ZAP_UID:-1000}"
-ZAP_GID="${ZAP_GID:-1000}"
+ZAP_UID="${ZAP_UID:-$(id -u)}"
+ZAP_GID="${ZAP_GID:-$(id -g)}"
 ZAP_CONF_PATH="$ROOT/scripts/security/zap.conf"
 
 if [ -z "$APP_URL" ]; then
